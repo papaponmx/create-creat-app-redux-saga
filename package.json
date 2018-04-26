@@ -5,9 +5,15 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "history": "4.7.2",
     "react": "16.3.2",
     "react-dom": "16.3.2",
-    "react-scripts": "1.1.4"
+    "react-redux": "5.0.7",
+    "react-router-dom": "4.2.2",
+    "react-router-redux": "latest",
+    "react-scripts": "1.1.4",
+    "redux-devtools-extension": "2.13.2",
+    "redux-saga": "0.16.0"
   },
   "devDependencies": {},
   "scripts": {
