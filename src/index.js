@@ -1,17 +1,20 @@
 import React from "react";
 import { render } from "react-dom";
-import Hello from "./Hello";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "react-router-redux";
+import store, { history } from "./store";
+import App from "./containers/app";
+import "./index.css";
 
-const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "center"
-};
+const target = document.querySelector("#root");
 
-const App = () => (
-  <div style={styles}>
-    <Hello name="CodeSandbox" />
-    <h2>App de ejemplo {"\u2728"}</h2>
-  </div>
+render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div>
+        <App />
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  target
 );
-
-render(<App />, document.getElementById("root"));
