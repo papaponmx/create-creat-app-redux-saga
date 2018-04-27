@@ -12,6 +12,7 @@
     "react-router-dom": "4.2.2",
     "react-router-redux": "latest",
     "react-scripts": "1.1.4",
+    "redux": "4.0.0",
     "redux-devtools-extension": "2.13.2",
     "redux-saga": "0.16.0"
   },

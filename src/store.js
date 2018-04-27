@@ -5,27 +5,25 @@ import rootReducer from "./reducers";
 import createSagaMiddleware from "redux-saga";
 import watcherSaga from "./sagas";
 
-import { composeWithDevTools } from "redux-devtools-extension";
-
 export const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const initialState = {};
 const enhancers = [];
-const middleware = [routerMiddleware(history), applyMiddleware(sagaMiddleware)];
+const middleware = [sagaMiddleware, routerMiddleware(history)];
 
 if (process.env.NODE_ENV === "development") {
-  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
+  const devToolsExtension = window.devToolsExtension;
 
   if (typeof devToolsExtension === "function") {
     enhancers.push(devToolsExtension());
   }
 }
 
-sagaMiddleware.run(watcherSaga);
-
 const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
 
 const store = createStore(rootReducer, initialState, composedEnhancers);
+
+sagaMiddleware.run(watcherSaga);
 
 export default store;
